@@ -7,3 +7,4 @@
 #!/bin/bash
 IP=$(curl http://ifconfig.me/ 2>/dev/null )
 echo $IP;  
+
