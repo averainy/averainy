@@ -12,5 +12,5 @@ def md5_file(name):
 files=os.listdir('.')
 for i in files:
 	if os.path.isfile(i):
-		print "filename:%s\t md5:%s"%(i,md5_file(i))
+		print "filename:%s\t\t\tmd5:%s"%(i,md5_file(i))
 
