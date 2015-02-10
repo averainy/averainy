@@ -1,8 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-"""pexpect 测试代码""""
+#"""pexpect 测试代码""""
 import pexpect
-
 def ssh_cmd(ip, passwd, cmd):
     ret = -1
     ssh = pexpect.spawn('ssh root@%s "%s"' % (ip, cmd))
@@ -28,4 +27,4 @@ def ssh_cmd(ip, passwd, cmd):
         ret = -2
     return ret 
 if __name__ == '__main__':
-    ssh_cmd('192.168.1.112','root','touch 1912  && rm 1912')
+    ssh_cmd('192.168.199.254','WUYAtiantang@)!@','ls')
