@@ -23,6 +23,7 @@ s.listen(10)
 print 'Socket now listening'
 while True:
     #wait to accept a connection - blocking call
+    print "1"
     conn, addr = s.accept()
     print 'Connected with ' + addr[0] + ':' + str(addr[1])
     #now keep talking with the client
@@ -31,6 +32,7 @@ while True:
         data=conn.recv(10)
         receive_data=receive_data+data
         if not data:
+            conn.close()
             break
         elif receive_data[-2:]=='\r\n':
             break
@@ -42,5 +44,7 @@ while True:
         print "ye"
         reply=api[mth]()
         conn.sendall(str(reply))
+    else:
+        conn.sendall("-1")
     conn.close()
 s.close()
