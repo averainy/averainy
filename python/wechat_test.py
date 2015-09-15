@@ -54,6 +54,16 @@ class msg_parse:
         return self._getData("EventKey")
     def getTicket(self):
         return self._getData("Ticket")
+    def getLatitude(self):
+        return self._getData("Latitude")
+    def getLongitude(self):
+        return self._getData("Longitude")
+    def getPrecision(self):
+        return self._getData("Precision")
+    def getTicket(self):
+        return self._getData("Ticket")
+    def getTicket(self):
+        return self._getData("Ticket")
 
 if __name__ == "__main__":
     # 文本消息
@@ -178,3 +188,43 @@ if __name__ == "__main__":
     print abc.getEventKey()
     print abc.getTicket()
     # 上报地理位置事件
+    res="""<xml>
+    <ToUserName><![CDATA[toUser]]></ToUserName>
+    <FromUserName><![CDATA[fromUser]]></FromUserName>
+    <CreateTime>123456789</CreateTime>
+    <MsgType><![CDATA[event]]></MsgType>
+    <Event><![CDATA[LOCATION]]></Event>
+    <Latitude>23.137466</Latitude>
+    <Longitude>113.352425</Longitude>
+    <Precision>119.385040</Precision>
+    </xml>"""
+    abc=msg_parse(res)
+    print abc.getLatitude()
+    print abc.getLongitude()
+    print abc.getPrecision()
+    # 点击菜单拉取消息时的事件推送
+    res="""<xml>
+    <ToUserName><![CDATA[toUser]]></ToUserName>
+    <FromUserName><![CDATA[FromUser]]></FromUserName>
+    <CreateTime>123456789</CreateTime>
+    <MsgType><![CDATA[event]]></MsgType>
+    <Event><![CDATA[CLICK]]></Event>
+    <EventKey><![CDATA[EVENTKEY]]></EventKey>
+    </xml>"""
+    abc=msg_parse(res)
+    print abc.getMsgType()
+    print abc.getEvent()
+    print abc.getEventKey()
+    # 点击菜单跳转链接时的事件推送
+    res="""<xml>
+    <ToUserName><![CDATA[toUser]]></ToUserName>
+    <FromUserName><![CDATA[FromUser]]></FromUserName>
+    <CreateTime>123456789</CreateTime>
+    <MsgType><![CDATA[event]]></MsgType>
+    <Event><![CDATA[VIEW]]></Event>
+    <EventKey><![CDATA[www.qq.com]]></EventKey>
+    </xml>"""
+    abc=msg_parse(res)
+    print abc.getMsgType()
+    print abc.getEvent()
+    print abc.getEventKey()
