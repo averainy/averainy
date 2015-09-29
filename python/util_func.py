@@ -1,6 +1,8 @@
 #!/usr/bin/python
 #encoding=utf8
 import re
+import sys
+import hashlib
 def replace_str(s,b):
     """
     本函数的目的是将字符串s中的"?"用列表b中的元素替换
@@ -26,12 +28,22 @@ def split(s):
             tmp=s[num*13:num*13+yushu]
         arraylist.append(tmp)
     return arraylist
-def split2(s):
+def splitByLen(s,lenth=1):
     """
-    按指定长度分割字符串s
+    按指定长度len分割字符串s
+    len 的默认值为1
+    返回值为list
     """
-    arraylist=re.findall(r'.{13}',s)
-    if len(arraylist)*13 != len(s):
-        arraylist.append(s[len(arraylist)*13:len(s)])
+    arraylist=re.findall(r'.{%d}'%lenth,s)
+    if len(arraylist)*lenth != len(s):
+        arraylist.append(s[len(arraylist)*lenth:len(s)])
     return arraylist
+def md5(file_path):
+    m2 = hashlib.md5()
+    with open(file_path) as fp:
+        src=fp.read(1024)
+        while src:
+            m2.update(src)
+            src=fp.read(1024)
+    return m2.hexdigest()
 
