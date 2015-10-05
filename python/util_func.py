@@ -47,3 +47,22 @@ def md5(file_path):
             src=fp.read(1024)
     return m2.hexdigest()
 
+def time_count(principle=0,interest_rate=0.08,monthly_deposit=0,target_deposit=0):
+    """这个函数用来计算达到最终资产需要的月数
+    参数1是初始资产，参数2是年化收益率，参数3是月递增资金，参数4是最终资产"""
+    total_principle=principle
+    month_count=0
+    while total_principle<target_deposit:
+        total_principle=total_principle*(1+interest_rate/12)+monthly_deposit
+        month_count=month_count+1
+    return(month_count)
+def total_principle_count(principle=0,interest_rate=0.08,monthly_deposit=0,target_time=0):
+    """这个函数用来计算到达指定月数之后能达到的总资产规模
+    参数1是初始资产，参数2是年化收益率，参数3是月递增资金，参数4是最终月数"""
+    total_principle=principle
+    month_count=0
+    while month_count<target_time:
+        total_principle=total_principle*(1+interest_rate/12)+monthly_deposit
+        month_count=month_count+1
+    return(total_principle)
+
