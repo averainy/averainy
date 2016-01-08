@@ -1,4 +1,5 @@
 #!/usr/bin/python
+#coding=utf8
 import os
 i=0
 def travel(dirpath,callback,deps=0):
