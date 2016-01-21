@@ -31,8 +31,7 @@ def get_value(p_dict):
     html = r.read()
     html = html.decode('utf-8').encode(sys.getfilesystemencoding())
     s=json.loads(html)
-    print s['FUNDID']
-    print s['result'][u'closeProfitRate']
+    print u"股票代码:%s\t市盈率:%f\t盈利收益率:%f%%"%(s['FUNDID'],s['result'][u'closeProfitRate'],1/s['result'][u'closeProfitRate']*100)
 def get_data_with_id(index_code):
     """
     通过传入股票的代码来查询市盈率
